@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
+import * as contactActions from "../../redux/actions/contactActions";
+import PropTypes from "prop-types";
 
-const AddContact = ({ closeAddContact }) => {
+const AddContact = ({ closeAddContact, dispatch }) => {
     const [value, setValue] = useState({
         firstName: "",
         lastName: "",
@@ -8,13 +11,15 @@ const AddContact = ({ closeAddContact }) => {
         email: "",
         phone: ""
     })
-
+    const handleSubmit = (event) => {
+        dispatch(contactActions.createContact(value))
+    }
     return (
         <div>
             <div>
                 Add new Contact
             </div>
-            <form className="container border mt-2" onSubmit={""}>
+            <form className="container border mt-2" onSubmit={handleSubmit}>
                 <div className="row">
                     <div className="col m-2">
                         {/* Updating the state */}
@@ -47,7 +52,7 @@ const AddContact = ({ closeAddContact }) => {
                     }}>Cancel</button>
                     {/* Passing the updated state to the function addContact in flux. Which will create a new contact on the API */}
                     <button type="button" className="btn btn-primary m-1" onClick={() => {
-
+                        handleSubmit()
                         closeAddContact()
                         // actions.getContacts(store.token)
                     }}>Save</button>
@@ -56,4 +61,15 @@ const AddContact = ({ closeAddContact }) => {
         </div>
     )
 }
-export default AddContact;
+AddContact.propTypes = {
+    contacts: PropTypes.array.isRequired,
+    dispatch: PropTypes.func.isRequired
+}
+
+function mapStateToProps(state, ownProps) {
+    return {
+        contacts: state.contacts
+    }
+}
+
+export default connect(mapStateToProps)(AddContact);

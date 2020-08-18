@@ -1,6 +1,7 @@
 import React from 'react';
 
-const ListOfContacts = () => {
+const ListOfContacts = ({ contacts }) => {
+    console.log(contacts)
     return (
         <div>
             <table className="table table-bordered mt-2 pt-5">
