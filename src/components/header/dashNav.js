@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import AddContact from "../contact/addContact";
 
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -72,7 +73,7 @@ const DashboardNav = () => {
     //inserting the data the should be found on the list of contact
     // const [inputSearch, setInputSearch] = useState("")
     // opening space to add a new contact
-    // const [showAddContact, setShowAddContact] = useState(false)
+    const [showAddContact, setShowAddContact] = useState(false)
 
     return (
 
@@ -102,16 +103,18 @@ const DashboardNav = () => {
                     Search
                 </Button>
                 {/* Opening the fields to add contact */}
-                <Button variant="outlined" color="primary" className="ml-5" >
+                <Button variant="outlined" color="primary" className="ml-5" onClick={() => {
+                    setShowAddContact(!showAddContact)
+                }}>
                     Add Contact
                 </Button>
             </form>
             {/* Conditional rendering for opnening fields to add contact and sending the function to close fields
             which will be triggered on addContacts.js lines 52 and 58 */}
-            {/* <div>
+            <div>
                 {showAddContact && <AddContact closeAddContact={() => {
-                setShowAddContact(false)
-            }} />}</div> */}
+                    setShowAddContact(false)
+                }} />}</div>
         </div>
     )
 }
