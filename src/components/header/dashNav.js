@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
@@ -68,17 +68,15 @@ const DashboardNav = () => {
     const classes = useStyles();
     // accessing actions in flux
     // setting paremeter for search contact
-    const [search, setSearch] = useState("")
+    // const [search, setSearch] = useState("")
     //inserting the data the should be found on the list of contact
-    const [inputSearch, setInputSearch] = useState("")
+    // const [inputSearch, setInputSearch] = useState("")
     // opening space to add a new contact
-    const [showAddContact, setShowAddContact] = useState(false)
+    // const [showAddContact, setShowAddContact] = useState(false)
 
     return (
 
-        <>
-
-
+        <div className="mt-3">
             <form className={classes.root} noValidate autoComplete="off">
 
                 <FormControl className={classes.margin, "mr-5"}>
@@ -90,7 +88,6 @@ const DashboardNav = () => {
                         multiple
                         value={""}
                     // updating the state with the selected option
-
                     >
                         <option aria-label="None" value="" />
                         <option value="email">Email</option>
@@ -115,7 +112,7 @@ const DashboardNav = () => {
                 {showAddContact && <AddContact closeAddContact={() => {
                 setShowAddContact(false)
             }} />}</div> */}
-        </>
+        </div>
     )
 }
 export default DashboardNav; 
