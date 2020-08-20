@@ -10,44 +10,6 @@ import FormControl from '@material-ui/core/FormControl';
 import NativeSelect from '@material-ui/core/NativeSelect';
 // import InputBase from '@material-ui/core/InputBase';
 import Button from '@material-ui/core/Button';
-// import { Typography } from '@material-ui/core';
-// import AddContact from '../components/addContact';
-// import ListOfContacts from '../components/listOfContacts';
-
-// const BootstrapInput = withStyles((theme) => ({
-//     root: {
-//         'label + &': {
-//             marginTop: theme.spacing(3),
-//         },
-//     },
-//     input: {
-//         borderRadius: 4,
-//         position: 'relative',
-//         backgroundColor: theme.palette.background.paper,
-//         border: '1px solid #ced4da',
-//         fontSize: 16,
-//         padding: '10px 26px 10px 12px',
-//         transition: theme.transitions.create(['border-color', 'box-shadow']),
-//         // Use the system font instead of the default Roboto font.
-//         fontFamily: [
-//             '-apple-system',
-//             'BlinkMacSystemFont',
-//             '"Segoe UI"',
-//             'Roboto',
-//             '"Helvetica Neue"',
-//             'Arial',
-//             'sans-serif',
-//             '"Apple Color Emoji"',
-//             '"Segoe UI Emoji"',
-//             '"Segoe UI Symbol"',
-//         ].join(','),
-//         '&:focus': {
-//             borderRadius: 4,
-//             borderColor: '#80bdff',
-//             boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
-//         },
-//     },
-// }))(InputBase);
 
 
 
@@ -109,8 +71,6 @@ const DashboardNav = () => {
                     Add Contact
                 </Button>
             </form>
-            {/* Conditional rendering for opnening fields to add contact and sending the function to close fields
-            which will be triggered on addContacts.js lines 52 and 58 */}
             <div>
                 {showAddContact && <AddContact closeAddContact={() => {
                     setShowAddContact(false)

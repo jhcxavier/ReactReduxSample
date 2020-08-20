@@ -23,25 +23,25 @@ const AddContact = ({ closeAddContact, dispatch }) => {
                 <div className="row">
                     <div className="col m-2">
                         {/* Updating the state */}
-                        <input type="text" className="form-control" placeholder="First name" onChange={(e) => setValue({ ...value, firstName: e.target.value })} />
+                        <input type="text" value={value.firstName} className="form-control" placeholder="First name" onChange={(e) => setValue({ ...value, firstName: e.target.value })} />
                     </div>
                     <div className="col m-2">
                         {/* Updating the state */}
-                        <input type="text" className="form-control" placeholder="Last name" onChange={(e) => setValue({ ...value, lastName: e.target.value })} />
+                        <input type="text" value={value.lastName} className="form-control" placeholder="Last name" onChange={(e) => setValue({ ...value, lastName: e.target.value })} />
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-5 m-2">
                         {/* Updating the state */}
-                        <input type="text" className="form-control" placeholder="Company" onChange={(e) => setValue({ ...value, company: e.target.value })} />
+                        <input type="text" value={value.company} className="form-control" placeholder="Company" onChange={(e) => setValue({ ...value, company: e.target.value })} />
                     </div>
                     <div className="col m-2">
                         {/* Updating the state */}
-                        <input type="text" className="form-control" placeholder="Email" onChange={(e) => setValue({ ...value, email: e.target.value })} />
+                        <input type="text" value={value.email} className="form-control" placeholder="Email" onChange={(e) => setValue({ ...value, email: e.target.value })} />
                     </div>
                     <div className="col m-2">
                         {/* Updating the state */}
-                        <input type="text" className="form-control" placeholder="Phone" onChange={(e) => setValue({ ...value, phone: e.target.value })} />
+                        <input type="text" value={value.phone} className="form-control" placeholder="Phone" onChange={(e) => setValue({ ...value, phone: e.target.value })} />
                     </div>
                 </div>
                 <div className="row m-1 d-flex justify-content-end">
@@ -62,7 +62,7 @@ const AddContact = ({ closeAddContact, dispatch }) => {
     )
 }
 AddContact.propTypes = {
-    contacts: PropTypes.array.isRequired,
+    // contacts: PropTypes.array.isRequired,
     dispatch: PropTypes.func.isRequired
 }
 
