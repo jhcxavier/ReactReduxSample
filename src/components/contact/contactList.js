@@ -38,7 +38,7 @@ const ListOfContacts = ({ contacts, actions }) => {
                                 <td>{e.company}</td>
                                 <td>{e.email}</td>
                                 <td>{e.phone}</td>
-                                <td></td>
+                                <td>{e.create_date}</td>
                                 <td>
                                     <i id='tooltip' className="fas fa-edit p-2" samesite={"None"} type="button" ></i>
                                     <i className="fas fa-users-cog p-2 text-secondary" samesite={"None"}></i>
