@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import * as contactActions from "../../redux/actions/contactActions";
 import PropTypes from "prop-types";
+import { bindActionCreators } from "redux"
 
-const AddContact = ({ closeAddContact, createContact }) => {
+const AddContact = ({ closeAddContact, actions }) => {
     const [value, setValue] = useState({
         firstName: "",
         lastName: "",
@@ -13,7 +14,7 @@ const AddContact = ({ closeAddContact, createContact }) => {
     })
     const handleSubmit = (event) => {
         // debugger;
-        createContact(value)
+        actions.createContact(value)
     }
     return (
         <div>
@@ -76,7 +77,7 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
     return {
-        createContact: contact => dispatch(contactActions.createContact(contact))
+        actions: bindActionCreators(contactActions, dispatch)
     }
 }
 
