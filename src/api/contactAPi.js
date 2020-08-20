@@ -2,7 +2,7 @@ import { handleResponse, handleError } from "./apiUtils";
 const baseUrl = "http://localhost:4002/contacts";
 
 export const getContact = () => {
-  return fetch(baseUrl).then(handleResponse).then(data => console.log("contactAPI", data)).catch(handleError);
+  return fetch(baseUrl).then(handleResponse).catch(handleError);
 }
 // export const getContact = () => {
 //   return fetch("http://localhost:4002/contacts").then(response => response.json()).then(data => console.log(data));

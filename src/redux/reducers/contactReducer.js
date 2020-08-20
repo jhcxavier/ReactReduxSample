@@ -5,6 +5,8 @@ export default function contactReducer(state = [], action) {
         case types.CREATE_CONTACT:
             // debugger;
             return [...state, { ...action.contact }]
+        case types.LOAD_CONTACTS_SUCCESS:
+            return action.contacts
         default:
             return state;
     }

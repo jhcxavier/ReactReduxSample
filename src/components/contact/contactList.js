@@ -1,13 +1,20 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import contactReducer from "../../redux/reducers/contactReducer";
+import * as contactActions from "../../redux/actions/contactActions";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import * as api from "../../api/contactAPi";
+import { bindActionCreators } from "redux"
 
 
 
-const ListOfContacts = ({ contacts }) => {
-
+const ListOfContacts = ({ contacts, actions }) => {
+    useEffect(() => {
+        actions.loadContacts().catch(error => {
+            alert("load courses failed " + error)
+        })
+    }, [])
+    console.log("loadcourses", contactActions.loadContacts())
     return (
         <div>
             <table className="table table-bordered mt-2 pt-5">
@@ -23,7 +30,7 @@ const ListOfContacts = ({ contacts }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {contacts.map((e, index) => {
+                    {contacts && contacts.map((e, index) => {
                         return (
                             <tr key={index}>
                                 <td>{e.firstName}</td>
@@ -48,7 +55,8 @@ const ListOfContacts = ({ contacts }) => {
     )
 }
 ListOfContacts.propTypes = {
-    contacts: PropTypes.array.isRequired
+    contacts: PropTypes.array.isRequired,
+    actions: PropTypes.object.isRequired
 }
 
 const mapStateToProps = (state) => {
@@ -57,5 +65,10 @@ const mapStateToProps = (state) => {
         contacts: state.contacts
     }
 }
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(contactActions, dispatch)
+    }
+}
 
-export default connect(mapStateToProps)(ListOfContacts);
+export default connect(mapStateToProps, mapDispatchToProps)(ListOfContacts);

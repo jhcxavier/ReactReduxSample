@@ -64,7 +64,7 @@ const AddContact = ({ closeAddContact, actions }) => {
     )
 }
 AddContact.propTypes = {
-    // contacts: PropTypes.array.isRequired,
+    contacts: PropTypes.array.isRequired,
     // dispatch: PropTypes.func.isRequired
 
 }
