@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import * as contactActions from "../../redux/actions/contactActions";
 import PropTypes from "prop-types";
 
-const AddContact = ({ closeAddContact, dispatch }) => {
+const AddContact = ({ closeAddContact, createContact }) => {
     const [value, setValue] = useState({
         firstName: "",
         lastName: "",
@@ -12,7 +12,8 @@ const AddContact = ({ closeAddContact, dispatch }) => {
         phone: ""
     })
     const handleSubmit = (event) => {
-        dispatch(contactActions.createContact(value))
+        // debugger;
+        createContact(value)
     }
     return (
         <div>
@@ -63,7 +64,8 @@ const AddContact = ({ closeAddContact, dispatch }) => {
 }
 AddContact.propTypes = {
     // contacts: PropTypes.array.isRequired,
-    dispatch: PropTypes.func.isRequired
+    // dispatch: PropTypes.func.isRequired
+
 }
 
 function mapStateToProps(state, ownProps) {
@@ -72,4 +74,10 @@ function mapStateToProps(state, ownProps) {
     }
 }
 
-export default connect(mapStateToProps)(AddContact);
+function mapDispatchToProps(dispatch) {
+    return {
+        createContact: contact => dispatch(contactActions.createContact(contact))
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddContact);

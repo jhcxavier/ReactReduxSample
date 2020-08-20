@@ -4,8 +4,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 const ListOfContacts = ({ contacts }) => {
-    console.log(contacts)
-    console.log("arrayyyy")
+    console.log("list of contacts", contacts)
     return (
         <div>
             <table className="table table-bordered mt-2 pt-5">
@@ -46,11 +45,16 @@ const ListOfContacts = ({ contacts }) => {
     )
 }
 ListOfContacts.propTypes = {
+
     // contacts: PropTypes.array.isRequired,
     contacts: PropTypes.array.isRequired
 }
 
-const mapStateToProps = (state) => ({
-    contacts: state.contacts
-})
+const mapStateToProps = (state) => {
+    // debugger;
+    return {
+        contacts: state.contacts
+    }
+}
+
 export default connect(mapStateToProps)(ListOfContacts);
