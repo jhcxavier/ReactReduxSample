@@ -2,9 +2,12 @@ import React from 'react';
 import contactReducer from "../../redux/reducers/contactReducer";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import * as api from "../../api/contactAPi";
+
+
 
 const ListOfContacts = ({ contacts }) => {
-    console.log("list of contacts", contacts)
+
     return (
         <div>
             <table className="table table-bordered mt-2 pt-5">
@@ -45,8 +48,6 @@ const ListOfContacts = ({ contacts }) => {
     )
 }
 ListOfContacts.propTypes = {
-
-    // contacts: PropTypes.array.isRequired,
     contacts: PropTypes.array.isRequired
 }
 
