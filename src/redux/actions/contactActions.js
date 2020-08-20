@@ -14,7 +14,7 @@ export function loadContacts() {
     return function (dispatch) {
         return contactAPI.getContact().then(contacts => {
             console.log("contact", contacts)
-            dispatch(loadContactsSuccess(contacts))
+            dispatch(loadContactsSuccess(contacts.slice().reverse()))
         }).catch(error => {
             throw error;
         })
