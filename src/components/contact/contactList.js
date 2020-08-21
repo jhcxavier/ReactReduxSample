@@ -11,10 +11,10 @@ import { bindActionCreators } from "redux"
 const ListOfContacts = ({ contacts, actions }) => {
     useEffect(() => {
         actions.loadContacts().catch(error => {
-            alert("load courses failed " + error)
+            alert("load contacts failed " + error)
         })
     }, [])
-    console.log("loadcourses", contactActions.loadContacts())
+    console.log("loadcontacts", contactActions.loadContacts())
     return (
         <div>
             <table className="table table-bordered mt-2 pt-5">
