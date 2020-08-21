@@ -5,15 +5,16 @@ import PropTypes from "prop-types";
 import { bindActionCreators } from "redux"
 
 const ListOfContacts = ({ contacts, actions }) => {
+    console.log("test", contacts)
     useEffect(() => {
         // const  = props;
+        console.log("useeffectContext", contacts)
         if (contacts.length === 0) {
             actions.loadContacts().catch(error => {
                 alert("load contacts failed " + error)
             })
         }
-    }, [contacts, actions])
-    console.log("loadcontacts", contactActions.loadContacts())
+    }, [contacts])
     return (
         <div>
             <table className="table table-bordered mt-2 pt-5">
@@ -60,11 +61,13 @@ ListOfContacts.propTypes = {
 
 const mapStateToProps = (state) => {
     // debugger;
+    console.log("mapstate", state)
     return {
         contacts: state.contacts
     }
 }
 function mapDispatchToProps(dispatch) {
+    console.log("mapdispathcrpos")
     return {
         actions: {
             loadContacts: bindActionCreators(contactActions.loadContacts, dispatch)

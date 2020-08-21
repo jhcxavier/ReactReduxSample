@@ -33,7 +33,6 @@ export function saveContact(contact) {
     return function (dispatch, getState) {
         return contactAPI
             .saveContact(contact)
-
             .then(savedContact => {
                 console.log("savedContact", savedContact)
                 contact._id

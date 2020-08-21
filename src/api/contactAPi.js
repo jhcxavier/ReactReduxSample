@@ -20,12 +20,7 @@ export function saveContact(contact) {
       phone: contact.phone
 
     }),
-  })
-    .then(() => {
-
-      getContact()
-
-    })
+  }).then(res => res.json())
     .catch(handleError);
 }
 
