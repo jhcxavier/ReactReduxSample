@@ -1,14 +1,21 @@
 import React, { useState } from 'react';
+import { connect } from "react-redux";
+import * as contactActions from "../../redux/actions/contactActions";
+import { bindActionCreators } from "redux"
+import PropTypes from "prop-types";
 
-const Contact = ({ data }) => {
+
+const Contact = ({ data, actions }) => {
     const [value, setValue] = useState({
         firstName: data.firstName,
         lastName: data.lastName,
         company: data.company,
         email: data.email,
         phone: data.phone,
+        _id: data._id
 
     })
+
     const [editContact, setEditContact] = useState(false)
     return (
         <>
@@ -32,6 +39,7 @@ const Contact = ({ data }) => {
                             <i className="fas fa-check p-2" samesite={"None"} type="button" onClick={() => {
                                 // actions.editContact(value.firstName, value.lastName, value.company, value.email, value.phone, data._id)
                                 // after sending we close the Edit mode
+                                actions.updateContact(value)
                                 setEditContact(!editContact)
                             }}></i>
                             {/* Cancelling the edit mode without update */}
@@ -52,6 +60,7 @@ const Contact = ({ data }) => {
                                 {/* Activating the edit mode */}
                                 <i id='tooltip' className="fas fa-edit p-2" samesite={"None"} type="button" onClick={() => {
                                     setEditContact(!editContact)
+
                                 }}></i>
                                 <i className="fas fa-users-cog p-2 text-secondary" samesite={"None"}></i>
                                 <i className="fas fa-file-download p-2 text-secondary" samesite={"None"}></i>
@@ -65,4 +74,16 @@ const Contact = ({ data }) => {
     )
 
 }
-export default Contact;
+
+function mapStateToProps(state) {
+    return {
+        contacts: state.contacts
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        actions: bindActionCreators(contactActions, dispatch)
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Contact);

@@ -6,10 +6,8 @@ import { bindActionCreators } from "redux"
 import Contact from "./contact1"
 
 const ListOfContacts = ({ contacts, actions }) => {
-    console.log("test", contacts)
+
     useEffect(() => {
-        // const  = props;
-        console.log("useeffectContext", contacts)
         if (contacts.length === 0) {
             actions.loadContacts().catch(error => {
                 alert("load contacts failed " + error)
@@ -34,21 +32,6 @@ const ListOfContacts = ({ contacts, actions }) => {
                     {contacts && contacts.map((contact) => {
                         return (
                             <Contact key={contact._id} data={contact} />
-                            // <tr key={index}>
-                            //     <td>{e.firstName}</td>
-                            //     <td>{e.lastName}</td>
-                            //     <td>{e.company}</td>
-                            //     <td>{e.email}</td>
-                            //     <td>{e.phone}</td>
-                            //     <td>{e.create_date}</td>
-                            //     <td>
-                            //         <i id='tooltip' className="fas fa-edit p-2" samesite={"None"} type="button" ></i>
-                            //         <i className="fas fa-users-cog p-2 text-secondary" samesite={"None"}></i>
-                            //         <i className="fas fa-file-download p-2 text-secondary" samesite={"None"}></i>
-                            //         {/* Delete a contact */}
-                            //         <i className="far fa-trash-alt p-2" samesite={"None"} type="button"></i>
-                            //     </td>
-                            // </tr>
                         )
                     })}
                 </tbody>
@@ -69,7 +52,6 @@ const mapStateToProps = (state) => {
     }
 }
 function mapDispatchToProps(dispatch) {
-    console.log("mapdispathcrpos")
     return {
         actions: {
             loadContacts: bindActionCreators(contactActions.loadContacts, dispatch)

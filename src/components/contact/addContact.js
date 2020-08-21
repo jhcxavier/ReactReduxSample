@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
 import * as contactActions from "../../redux/actions/contactActions";
-import PropTypes from "prop-types";
 import { bindActionCreators } from "redux"
+import PropTypes from "prop-types";
 
-const AddContact = ({ closeAddContact, actions, saveContact }) => {
+const AddContact = ({ closeAddContact, actions }) => {
     const [value, setValue] = useState({
         firstName: "",
         lastName: "",
@@ -54,7 +54,7 @@ const AddContact = ({ closeAddContact, actions, saveContact }) => {
                     }}>Cancel</button>
                     {/* Passing the updated state to the function addContact in flux. Which will create a new contact on the API */}
                     <button type="button" className="btn btn-primary m-1" onClick={() => {
-                        handleSubmit()
+                        actions.saveContact(value)
                         closeAddContact()
 
                         // actions.getContacts(store.token)
