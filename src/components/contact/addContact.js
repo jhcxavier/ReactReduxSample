@@ -14,7 +14,7 @@ const AddContact = ({ closeAddContact, actions, saveContact }) => {
     })
     const handleSubmit = () => {
         // debugger;
-        contactActions.saveContact(value)
+        actions.saveContact(value)
     }
     return (
         <div>
@@ -65,7 +65,7 @@ const AddContact = ({ closeAddContact, actions, saveContact }) => {
     )
 }
 AddContact.propTypes = {
-    contacts: PropTypes.array.isRequired
+    contacts: PropTypes.array.isRequired,
     // saveContact: PropTypes.func.isRequired
 }
 

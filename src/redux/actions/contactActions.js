@@ -29,7 +29,7 @@ export function loadContacts() {
 }
 
 export function saveContact(contact) {
-
+    console.log("saving Contact", contact)
     return function (dispatch, getState) {
         return contactAPI
             .saveContact(contact)
