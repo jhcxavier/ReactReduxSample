@@ -4,7 +4,7 @@ import * as contactActions from "../../redux/actions/contactActions";
 import PropTypes from "prop-types";
 import { bindActionCreators } from "redux"
 
-const AddContact = ({ closeAddContact, actions }) => {
+const AddContact = ({ closeAddContact, actions, saveContact }) => {
     const [value, setValue] = useState({
         firstName: "",
         lastName: "",
@@ -12,9 +12,9 @@ const AddContact = ({ closeAddContact, actions }) => {
         email: "",
         phone: ""
     })
-    const handleSubmit = (event) => {
+    const handleSubmit = () => {
         // debugger;
-        actions.createContact(value)
+        contactActions.saveContact(value)
     }
     return (
         <div>
@@ -56,6 +56,7 @@ const AddContact = ({ closeAddContact, actions }) => {
                     <button type="button" className="btn btn-primary m-1" onClick={() => {
                         handleSubmit()
                         closeAddContact()
+
                         // actions.getContacts(store.token)
                     }}>Save</button>
                 </div>
@@ -64,12 +65,11 @@ const AddContact = ({ closeAddContact, actions }) => {
     )
 }
 AddContact.propTypes = {
-    contacts: PropTypes.array.isRequired,
-    // dispatch: PropTypes.func.isRequired
-
+    contacts: PropTypes.array.isRequired
+    // saveContact: PropTypes.func.isRequired
 }
 
-function mapStateToProps(state, ownProps) {
+function mapStateToProps(state) {
     return {
         contacts: state.contacts
     }
