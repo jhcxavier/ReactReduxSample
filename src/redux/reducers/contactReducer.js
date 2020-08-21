@@ -1,6 +1,7 @@
 import * as types from "../actions/actionTypes";
+import initialState from './initialState';
 
-export default function contactReducer(state = [], action) {
+export default function contactReducer(state = initialState.contacts, action) {
     switch (action.type) {
         case types.CREATE_CONTACT:
             // debugger;

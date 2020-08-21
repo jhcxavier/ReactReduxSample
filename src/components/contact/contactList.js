@@ -1,19 +1,18 @@
 import React, { useEffect } from 'react';
-import contactReducer from "../../redux/reducers/contactReducer";
 import * as contactActions from "../../redux/actions/contactActions";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
-import * as api from "../../api/contactAPi";
 import { bindActionCreators } from "redux"
-
-
 
 const ListOfContacts = ({ contacts, actions }) => {
     useEffect(() => {
-        actions.loadContacts().catch(error => {
-            alert("load contacts failed " + error)
-        })
-    }, [])
+        // const  = props;
+        if (contacts.length === 0) {
+            actions.loadContacts().catch(error => {
+                alert("load contacts failed " + error)
+            })
+        }
+    }, [contacts, actions])
     console.log("loadcontacts", contactActions.loadContacts())
     return (
         <div>
@@ -67,7 +66,9 @@ const mapStateToProps = (state) => {
 }
 function mapDispatchToProps(dispatch) {
     return {
-        actions: bindActionCreators(contactActions, dispatch)
+        actions: {
+            loadContacts: bindActionCreators(contactActions.loadContacts, dispatch)
+        }
     }
 }
 
