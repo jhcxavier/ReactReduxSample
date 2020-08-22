@@ -29,15 +29,17 @@ const ListOfContacts = ({ contacts, actions, loading }) => {
                         <th scope="col">{' '}</th>
                     </tr>
                 </thead>
-                {loading ? <Spinner /> : (
-                    <tbody>
-                        {contacts && contacts.map((contact) => {
-                            return (
-                                <Contact key={contact._id} data={contact} />
-                            )
-                        })}
-                    </tbody>
-                )}
+
+                {!contacts.length ? <Spinner /> :
+                    <tbody>{contacts.map((contact) => {
+                        return (
+
+                            <Contact key={contact._id} data={contact} />
+
+                        )
+                    })}</tbody>}
+
+
 
             </table>
         </div>
