@@ -1,3 +1,4 @@
 export default {
-    contacts: []
+    contacts: [],
+    apiCallsInProgress: 0
 }

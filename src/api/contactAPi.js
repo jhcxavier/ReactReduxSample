@@ -35,7 +35,6 @@ export function updateContact(contact) {
       company: contact.company,
       email: contact.email,
       phone: contact.phone
-
     }),
   }).then(res => {
     // console.log("ressss", res)
