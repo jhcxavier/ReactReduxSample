@@ -4,8 +4,9 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { bindActionCreators } from "redux"
 import Contact from "./contact1"
+import Spinner from '../common/spinner';
 
-const ListOfContacts = ({ contacts, actions }) => {
+const ListOfContacts = ({ contacts, actions, loading }) => {
 
     useEffect(() => {
         if (contacts.length === 0) {
@@ -28,27 +29,33 @@ const ListOfContacts = ({ contacts, actions }) => {
                         <th scope="col">{' '}</th>
                     </tr>
                 </thead>
-                <tbody>
-                    {contacts && contacts.map((contact) => {
-                        return (
-                            <Contact key={contact._id} data={contact} />
-                        )
-                    })}
-                </tbody>
+                {loading ? <Spinner /> : (
+                    <tbody>
+                        {contacts && contacts.map((contact) => {
+                            return (
+                                <Contact key={contact._id} data={contact} />
+                            )
+                        })}
+                    </tbody>
+                )}
+
             </table>
         </div>
     )
 }
 ListOfContacts.propTypes = {
     contacts: PropTypes.array.isRequired,
-    actions: PropTypes.object.isRequired
+    actions: PropTypes.object.isRequired,
+    loading: PropTypes.bool.isRequired
 }
 
 const mapStateToProps = (state) => {
     // debugger;
     console.log("mapstate", state)
     return {
-        contacts: state.contacts
+        contacts: state.contacts,
+        loading: state.apiCallsInProgress > 0
+
     }
 }
 function mapDispatchToProps(dispatch) {

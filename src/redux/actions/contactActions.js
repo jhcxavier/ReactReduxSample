@@ -1,5 +1,6 @@
 import * as types from "./actionTypes";
 import * as contactAPI from "../../api/contactAPi";
+import { beginApiCall } from "./apiStatusAction";
 
 // export function createContact(contact) {
 //     // debugger;
@@ -21,9 +22,12 @@ export function createContactSuccess(contact) {
 
 export function loadContacts() {
     return function (dispatch) {
+        dispatch(beginApiCall())
         return contactAPI.getContact().then(contacts => {
             console.log("contact", contacts)
-            dispatch(loadContactsSuccess(contacts.slice().reverse()))
+            setTimeout(() => {
+                dispatch(loadContactsSuccess(contacts.slice().reverse()))
+            }, 2000)
         }).catch(error => {
             throw error;
         })
@@ -31,9 +35,9 @@ export function loadContacts() {
 }
 
 export function saveContact(contact) {
-    debugger;
     console.log("saving Contact", contact)
     return function (dispatch, getState) {
+        dispatch(beginApiCall())
         return contactAPI
             .saveContact(contact)
             .then(savedContact => {
@@ -48,6 +52,7 @@ export function saveContact(contact) {
 export function updateContact(contact) {
     console.log("update", contact)
     return function (dispatch, getState) {
+        dispatch(beginApiCall())
         return contactAPI
             .updateContact(contact)
             .then(savedContact => {
