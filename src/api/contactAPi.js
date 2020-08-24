@@ -43,8 +43,10 @@ export function updateContact(contact) {
   })
     .catch(handleError);
 }
-export function deleteContact(contactId) {
-  return fetch(baseUrl + contactId, { method: "DELETE" })
-    .then(handleResponse)
+export function deleteContact(contact) {
+  return fetch(`http://localhost:4002/contact/${contact._id}`, { method: "DELETE" })
+    .then(res => {
+      return res.json()
+    })
     .catch(handleError);
 }

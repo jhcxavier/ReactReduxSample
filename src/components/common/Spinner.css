@@ -4,6 +4,9 @@
   width: 10em;
   height: 10em;
 }
+.spinner{
+  margin-left: 50%;
+}
 .loader {
   margin: 60px auto;
   font-size: 10px;

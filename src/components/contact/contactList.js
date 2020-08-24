@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import * as contactActions from "../../redux/actions/contactActions";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
@@ -7,7 +7,7 @@ import Contact from "./contact1"
 import Spinner from '../common/spinner';
 
 const ListOfContacts = ({ contacts, actions, loading }) => {
-
+    const [spinner, setSpinner] = useState(false)
     useEffect(() => {
         if (contacts.length === 0) {
             actions.loadContacts().catch(error => {
@@ -15,14 +15,13 @@ const ListOfContacts = ({ contacts, actions, loading }) => {
             })
         }
     }, [contacts])
+
     let border;
-    // useEffect(() => {
     if (!contacts.length) {
         border = "table mt-2 pt-5";
     } else {
         border = "table table-bordered mt-2 pt-5";
     }
-    // }, [])
 
     return (
         <div>
@@ -42,18 +41,15 @@ const ListOfContacts = ({ contacts, actions, loading }) => {
                 {!contacts.length ? <Spinner /> :
                     <tbody>{contacts.map((contact) => {
                         return (
-
                             <Contact key={contact._id} data={contact} />
-
                         )
                     })}</tbody>}
-
-
-
             </table>
+            {/* {spinner && <Spinner />} */}
         </div>
     )
 }
+
 ListOfContacts.propTypes = {
     contacts: PropTypes.array.isRequired,
     actions: PropTypes.object.isRequired,

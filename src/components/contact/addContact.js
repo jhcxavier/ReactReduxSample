@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import * as contactActions from "../../redux/actions/contactActions";
 import { bindActionCreators } from "redux"
 import PropTypes from "prop-types";
+import { toast } from "react-toastify";
 
 const AddContact = ({ closeAddContact, actions }) => {
     const [value, setValue] = useState({
@@ -15,6 +16,7 @@ const AddContact = ({ closeAddContact, actions }) => {
     const handleSubmit = () => {
         // debugger;
         actions.saveContact(value)
+
     }
     return (
         <div>
@@ -54,7 +56,9 @@ const AddContact = ({ closeAddContact, actions }) => {
                     }}>Cancel</button>
                     {/* Passing the updated state to the function addContact in flux. Which will create a new contact on the API */}
                     <button type="button" className="btn btn-primary m-1" onClick={() => {
-                        actions.saveContact(value)
+                        actions.saveContact(value).then(() => {
+                            toast.success("Contact Saved.");
+                        })
                         closeAddContact()
 
                         // actions.getContacts(store.token)

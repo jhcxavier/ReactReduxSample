@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import * as contactActions from "../../redux/actions/contactActions";
 import { bindActionCreators } from "redux"
 import PropTypes from "prop-types";
+import { toast } from "react-toastify";
 
 
 const Contact = ({ data, actions }) => {
@@ -39,7 +40,9 @@ const Contact = ({ data, actions }) => {
                             <i className="fas fa-check p-2" samesite={"None"} type="button" onClick={() => {
                                 // actions.editContact(value.firstName, value.lastName, value.company, value.email, value.phone, data._id)
                                 // after sending we close the Edit mode
-                                actions.updateContact(value)
+                                actions.updateContact(value).then(() => {
+                                    toast.success("Edit completed.");
+                                })
                                 setEditContact(!editContact)
                             }}></i>
                             {/* Cancelling the edit mode without update */}
