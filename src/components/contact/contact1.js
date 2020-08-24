@@ -69,7 +69,7 @@ const Contact = ({ data, actions }) => {
                                 <i className="fas fa-file-download p-2 text-secondary" samesite={"None"}></i>
                                 {/* Delete a contact */}
                                 <i className="far fa-trash-alt p-2" samesite={"None"} type="button" onClick={() => {
-                                    // actions.deleteContact(data._id)
+                                    actions.deleteContact(data)
                                 }}></i>
                             </td></>)}
             </tr>

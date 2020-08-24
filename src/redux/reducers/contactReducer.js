@@ -11,6 +11,8 @@ export default function contactReducer(state = initialState.contacts, action) {
                 contact._id === action.contact._id ? action.contact : contact)
         case types.LOAD_CONTACTS_SUCCESS:
             return action.contacts
+        case types.DELETE_CONTACT_OPTIMISTIC:
+            return state.filter(contact => contact._id !== action.contact._id)
         default:
             return state;
     }

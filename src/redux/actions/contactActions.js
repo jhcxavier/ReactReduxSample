@@ -19,7 +19,9 @@ export function createContactSuccess(contact) {
     console.log("functionCreating", contact)
     return { type: types.CREATE_CONTACT_SUCCESS, contact }
 }
-
+export function deleteContactOptimistic(contact) {
+    return { type: types.DELETE_CONTACT_OPTIMISTIC, contact };
+}
 export function loadContacts() {
     return function (dispatch) {
         dispatch(beginApiCall())
@@ -46,6 +48,19 @@ export function saveContact(contact) {
             }).catch(error => {
                 throw error
             })
+    }
+}
+
+
+export function deleteContact(contact) {
+    console.log("delete", contact)
+    return function (dispatch) {
+        return contactAPI.deleteContact(contact).then(deletedContact => {
+            console.log("deletedContact")
+            dispatch(deleteContactOptimistic(contact))
+        }).catch(err => {
+            throw err;
+        })
     }
 }
 

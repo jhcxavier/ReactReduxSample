@@ -44,9 +44,6 @@ export function updateContact(contact) {
     .catch(handleError);
 }
 export function deleteContact(contact) {
+  console.log("contact in delete", contact)
   return fetch(`http://localhost:4002/contact/${contact._id}`, { method: "DELETE" })
-    .then(res => {
-      return res.json()
-    })
-    .catch(handleError);
 }

@@ -58,7 +58,7 @@ ListOfContacts.propTypes = {
 
 const mapStateToProps = (state) => {
     // debugger;
-    console.log("mapstate", state)
+    // console.log("mapstate", state)
     return {
         contacts: state.contacts,
         loading: state.apiCallsInProgress > 0
