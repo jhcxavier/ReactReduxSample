@@ -39,9 +39,9 @@ const ListOfContacts = ({ contacts, actions, loading }) => {
                 </thead>
 
                 {!contacts.length ? <Spinner /> :
-                    <tbody>{contacts.map((contact) => {
+                    <tbody>{contacts.map((contact, index) => {
                         return (
-                            <Contact key={contact._id} data={contact} />
+                            <Contact key={index} data={contact} />
                         )
                     })}</tbody>}
             </table>
