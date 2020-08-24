@@ -38,14 +38,14 @@ const ListOfContacts = ({ contacts, actions, loading }) => {
                     </tr>
                 </thead>
 
-                {!contacts.length ? <Spinner /> :
-                    <tbody>{contacts.map((contact, index) => {
+                {contacts.length ?
+                    (<tbody>{contacts.map((contact, index) => {
                         return (
                             <Contact key={index} data={contact} />
                         )
-                    })}</tbody>}
+                    })}</tbody>) : ""}
             </table>
-            {/* {spinner && <Spinner />} */}
+            {!contacts.length ? <Spinner /> : ""}
         </div>
     )
 }
