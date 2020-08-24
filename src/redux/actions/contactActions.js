@@ -15,13 +15,21 @@ export function updateContactSuccess(contact) {
     console.log("function", contact)
     return { type: types.UPDATE_CONTACT_SUCCESS, contact }
 }
+
 export function createContactSuccess(contact) {
     console.log("functionCreating", contact)
     return { type: types.CREATE_CONTACT_SUCCESS, contact }
 }
+
 export function deleteContactOptimistic(contact) {
     return { type: types.DELETE_CONTACT_OPTIMISTIC, contact };
 }
+
+export function loadSearchSuccess(typeSearch) {
+    console.log("typeSearch", typeSearch)
+    return { type: types.LOAD_SEARCH_SUCCESS, typeSearch }
+}
+
 export function loadContacts() {
     return function (dispatch) {
         dispatch(beginApiCall())
@@ -51,7 +59,6 @@ export function saveContact(contact) {
     }
 }
 
-
 export function deleteContact(contact) {
     console.log("delete", contact)
     return function (dispatch) {
@@ -77,5 +84,12 @@ export function updateContact(contact) {
             }).catch(error => {
                 throw error
             })
+    }
+}
+
+export function loadSearch(typeSearch) {
+    return function (dispatch) {
+        console.log("loadSearch", typeSearch)
+        return dispatch(loadSearchSuccess(typeSearch))
     }
 }

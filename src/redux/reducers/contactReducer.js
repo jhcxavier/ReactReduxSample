@@ -13,6 +13,20 @@ export default function contactReducer(state = initialState.contacts, action) {
             return action.contacts
         case types.DELETE_CONTACT_OPTIMISTIC:
             return state.filter(contact => contact._id !== action.contact._id)
+        // case types.LOAD_SEARCH_SUCCESS:
+        //     console.log("state", state)
+        //     console.log("typeSearch".action.typeSearch)
+
+        // state.filter((contact) => {
+
+        //     if (type === "email") {
+        //         console.log("type", type)
+        //         return contact.email.includes(value);
+        //     } else if (type === "phone") {
+        //         return contact.phone.includes(value);
+        //     }
+        //     return true;
+        // })
         default:
             return state;
     }
