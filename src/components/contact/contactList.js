@@ -15,9 +15,18 @@ const ListOfContacts = ({ contacts, actions, loading }) => {
             })
         }
     }, [contacts])
+    let border;
+    // useEffect(() => {
+    if (!contacts.length) {
+        border = "table mt-2 pt-5";
+    } else {
+        border = "table table-bordered mt-2 pt-5";
+    }
+    // }, [])
+
     return (
         <div>
-            <table className="table table-bordered mt-2 pt-5">
+            <table className={border}>
                 <thead className="thead-dark">
                     <tr>
                         <th scope="col">First Name</th>
