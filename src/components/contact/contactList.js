@@ -22,8 +22,9 @@ const ListOfContacts = ({ contacts, actions }) => {
     } else {
         border = "table table-bordered mt-2 pt-5";
     }
+
     return (
-        <div>
+        <>
             <table className={border}>
                 <thead className="thead-dark">
                     <tr>
@@ -42,10 +43,10 @@ const ListOfContacts = ({ contacts, actions }) => {
                         return (
                             <Contact key={index} data={contact} />
                         )
-                    })}</tbody>) : ""}
+                    })}</tbody>) : <tbody />}
             </table>
             {!contacts.length ? <Spinner /> : ""}
-        </div>
+        </>
     )
 }
 
