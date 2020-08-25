@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import * as contactActions from "../../redux/actions/contactActions";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";

@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { connect } from "react-redux";
 import * as contactActions from "../../redux/actions/contactActions";
 import { bindActionCreators } from "redux"
-import PropTypes from "prop-types";
 import { toast } from "react-toastify";
 
 

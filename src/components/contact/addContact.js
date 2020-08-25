@@ -4,6 +4,7 @@ import * as contactActions from "../../redux/actions/contactActions";
 import { bindActionCreators } from "redux"
 import PropTypes from "prop-types";
 import { toast } from "react-toastify";
+// import { catch } from "fetch-mock";
 
 const AddContact = ({ closeAddContact, actions }) => {
     const [value, setValue] = useState({
@@ -13,10 +14,13 @@ const AddContact = ({ closeAddContact, actions }) => {
         email: "",
         phone: ""
     })
-    const handleSubmit = () => {
+    const handleSubmit = async () => {
         // debugger;
-        actions.saveContact(value)
-
+        try {
+            await actions.saveContact(value)
+        } catch (error) {
+            console.log(error)
+        }
     }
     return (
         <div>
@@ -55,12 +59,15 @@ const AddContact = ({ closeAddContact, actions }) => {
                         closeAddContact();
                     }}>Cancel</button>
                     {/* Passing the updated state to the function addContact in flux. Which will create a new contact on the API */}
-                    <button type="button" className="btn btn-primary m-1" onClick={() => {
-                        actions.saveContact(value).then(() => {
+                    <button type="button" className="btn btn-primary m-1" onClick={async () => {
+                        try {
+                            await actions.saveContact(value)
                             toast.success("Contact Saved.");
-                        })
-                        closeAddContact()
-
+                        } catch (error) {
+                            console.log(error)
+                        } finally {
+                            closeAddContact()
+                        }
                         // actions.getContacts(store.token)
                     }}>Save</button>
                 </div>
