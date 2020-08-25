@@ -6,8 +6,8 @@ import { bindActionCreators } from "redux"
 import Contact from "./contact1"
 import Spinner from '../common/spinner';
 
-const ListOfContacts = ({ contacts, actions, loading, typeSearch }) => {
-    const [spinner, setSpinner] = useState(false)
+const ListOfContacts = ({ contacts, actions }) => {
+    // const [spinner, setSpinner] = useState(false)
     useEffect(() => {
         if (contacts.length === 0) {
             actions.loadContacts().catch(error => {
@@ -22,7 +22,6 @@ const ListOfContacts = ({ contacts, actions, loading, typeSearch }) => {
     } else {
         border = "table table-bordered mt-2 pt-5";
     }
-    console.log("loadSearch", typeSearch)
     return (
         <div>
             <table className={border}>
@@ -53,17 +52,15 @@ const ListOfContacts = ({ contacts, actions, loading, typeSearch }) => {
 ListOfContacts.propTypes = {
     contacts: PropTypes.array.isRequired,
     actions: PropTypes.object.isRequired,
-    loading: PropTypes.bool.isRequired,
+    // loading: PropTypes.bool.isRequired,
     // typeSearch: PropTypes.object.isRequired
 }
 
-const mapStateToProps = (state, action) => {
-    // debugger;
-    // console.log("mapstate", state)
+const mapStateToProps = (state) => {
+
     return {
         contacts: state.contacts,
         loading: state.apiCallsInProgress > 0,
-        typeSearch: action.typeSearch
 
     }
 }
@@ -71,7 +68,6 @@ function mapDispatchToProps(dispatch) {
     return {
         actions: {
             loadContacts: bindActionCreators(contactActions.loadContacts, dispatch),
-            // loadSearch: bindActionCreators(contactActions.loadSearch, dispatch)
         }
     }
 }
