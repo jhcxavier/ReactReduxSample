@@ -67,6 +67,7 @@ const DashboardNav = ({ actions }) => {
                 {/* sending the option and the value for searching */}
                 <Button type="button" variant="outlined" color="primary" className="ml-5" onClick={() => {
                     actions.loadSearch({ "type": search, "value": inputSearch })
+
                 }}>
                     Search
                 </Button>
@@ -81,7 +82,9 @@ const DashboardNav = ({ actions }) => {
                 {showAddContact && <AddContact closeAddContact={() => {
                     setShowAddContact(false)
                 }} />}</div>
+
         </div>
+
     )
 }
 function mapStateToProps(state) {

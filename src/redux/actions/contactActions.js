@@ -90,6 +90,15 @@ export function updateContact(contact) {
 export function loadSearch(typeSearch) {
     return function (dispatch) {
         console.log("loadSearch", typeSearch)
-        return dispatch(loadSearchSuccess(typeSearch))
+        if (typeSearch.value === "") {
+            return contactAPI.getContact().then(contacts => {
+                console.log("contact", contacts)
+                dispatch(loadContactsSuccess(contacts.slice().reverse()))
+            }).catch(error => {
+                throw error;
+            })
+        } else {
+            return dispatch(loadSearchSuccess(typeSearch))
+        }
     }
 }
